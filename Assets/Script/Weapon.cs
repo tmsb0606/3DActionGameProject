@@ -29,6 +29,7 @@ public class Weapon : MonoBehaviour
             {
                return;
             }
+            print("“–‚½‚Á‚½");
             hitList.Add(other.gameObject);
         }
         

@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour,IDamagable
     public void AddDamage(float damage)
     {
         status.HP -= (int)damage;
-        print("エネミーHP:" + status.HP+ "/"+status.maxHP);
+        //print("エネミーHP:" + status.HP+ "/"+status.maxHP);
         image.GetComponent<Image>().fillAmount = (float)status.HP / status.maxHP;
     }
 }

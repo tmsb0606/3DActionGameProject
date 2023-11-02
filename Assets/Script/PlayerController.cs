@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour,IDamagable
     private Animator _Animator;
     public float HitStopTime = 0.23f;
     private bool _isAttack = false;
+    List<GameObject> endAttackList = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -53,16 +54,18 @@ public class PlayerController : MonoBehaviour,IDamagable
     {
         if (_Animator.GetBool("isGrandAttack"))
         {
+            weapon.hitList = new List<GameObject>();
             GrandAttack();
         }
        // GameObject.Find("Enemy").GetComponent<IDamagable>().AddDamage(10f);
     }
     private async void GrandAttack()
     {
-        weapon.hitList = new List<GameObject>();
-        List<GameObject> endAttackList = new List<GameObject>();
+        //weapon.hitList = new List<GameObject>();
+        //endAttackList = new List<GameObject>();
         while (_Animator.GetBool("isGrandAttack"))
         {
+            
            
             //await UniTask.Delay(10);
             if (weapon.hitList.Count > 0)
@@ -80,7 +83,7 @@ public class PlayerController : MonoBehaviour,IDamagable
 
                    
                 }
-                weapon.hitList = new List<GameObject>();
+                //weapon.hitList = new List<GameObject>();
 
             }
             await UniTask.Delay(10);
@@ -103,6 +106,8 @@ public class PlayerController : MonoBehaviour,IDamagable
     }
     public void EndAttackJudgment()
     {
+        weapon.hitList = new List<GameObject>();
+        endAttackList = new List<GameObject>();
         _isAttack = false;
     }
     public void EndComboAttack1()
@@ -114,7 +119,7 @@ public class PlayerController : MonoBehaviour,IDamagable
 
     public void OnAttackHit()
     {
-        print("ヒットストップ");
+        //print("ヒットストップ");
         // モーションを止める
         _Animator.speed = 0f;
 
